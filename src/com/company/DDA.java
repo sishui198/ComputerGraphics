@@ -31,7 +31,7 @@ class point{
 
 public class DDA {
     private point a,b;
-    private int p[][];//线段上的点
+    private double p[][];//线段上的点
     private double dx,dy;
     private double epsilon;
     private int num;
@@ -49,9 +49,9 @@ public class DDA {
         }
     }
     public void DDALine(){
-        int num,x,y;
-        double k;
-        if(a.getX()>=b.getX()){
+        int num;
+        double k,dx1=dx,dy1=dy,x,y;
+        if(a.getX()<=b.getX()){
             x = (int)(a.getX()+0.5);
             y = (int)(a.getY()+0.5);
             if(a.getY()>b.getY()){
@@ -68,33 +68,42 @@ public class DDA {
         }
 
         if(epsilon==0){//x
-            num = (int)(dx+0.5);//需要描点的个数-1
+            num = (int)dx1;//需要描点的个数-1
             this.num = num;
-            p = new int[num][2];
+            System.out.println("num1:"+num);
+            p = new double[num+1][2];
             p[0][0] = x;
             p[0][1] = y;
-            for(int i=1; i<num; i++){
+            for(int i=1; i<=num; i++){
                 x++;
-                y=(int)(y+k+0.5);
+                y=y+k;
                 p[i][0]=x;
                 p[i][1]=y;
+
             }
         }else{
-            num = (int)(dy+0.5);//需要描点的个数-1
+            num = (int)(dy1);//需要描点的个数-1
             this.num = num;
-            p = new int[num][2];
+            System.out.println("num2:"+num);
+            p = new double[num+1][2];
             p[0][0] = x;
             p[0][1] = y;
-            for(int i=1; i<num; i++){
-                x=(int)(x+1/k+0.5);
+            for(int i=1; i<=num; i++){
+                x=x+1/k;
                 y++;
                 p[i][0]=x;
                 p[i][1]=y;
+
             }
+        }
+        for(int i=0; i<=num; i++){
+            p[i][0] = (int)(p[i][0]+0.5);
+            p[i][1] = (int)(p[i][1]+0.5);
+           // System.out.printf("%d,%d\n",p[i][0],p[i][1]);
         }
     }
 
-    public int[][] getP() {
+    public double[][] getP() {
         return p;
     }
 

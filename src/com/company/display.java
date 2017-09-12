@@ -8,9 +8,10 @@ public class display {
     private int numofY = 10;
     void display(DDA dda){
         int picture[][] = new int[numofX][numofY];
-        int p[][] = dda.getP();
+        double p[][] = dda.getP();
         for(int i=0; i<dda.getNum(); i++){
-            picture[p[i][0]][p[i][1]] = 1;
+            picture[(int)p[i][0]][(int)p[i][1]] = 1;
+            System.out.println("i:"+i);
         }
         for(int i=0; i<numofX; i++){
             for(int j=0; j<numofY; j++){
