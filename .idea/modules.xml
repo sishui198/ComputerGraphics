@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DDA.iml" filepath="$PROJECT_DIR$/DDA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/中点Bresenham.iml" filepath="$PROJECT_DIR$/中点Bresenham.iml" />
     </modules>
   </component>
 </project>
